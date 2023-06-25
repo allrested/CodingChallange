@@ -1,0 +1,17 @@
+version: '3'
+services:
+  email_backend:
+    restart: unless-stopped
+    build: script
+    container_name: email_backend
+    environment:
+      - .env
+    volumes:
+      - ./script/app:/app
+    networks:
+      - email_default
+    ports:
+      - 5000:5000
+networks:
+  email_default:
+    external: false

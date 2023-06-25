@@ -1,0 +1,4 @@
+mailtrap
+flask
+flask_sqlalchemy
+pytz
