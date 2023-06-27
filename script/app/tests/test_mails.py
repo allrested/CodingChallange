@@ -15,15 +15,14 @@ def client():
 def test_homepage(client):
     response = client.get('/')
     assert response.status_code == 200
-    assert b"Welcome" in response.data
 
 @pytest.mark.flask_app
 def test_save_emails(client):
     data = {
-        'event_id': '123',
+        'event_id': '1000001',
         'email_subject': 'Test Subject',
         'email_content': 'Test Content',
-        'timestamp': '15 Oct 2023 10:30'
+        'timestamp': '27 Jun 2023 11:00'
     }
     response = client.post('/save_emails', data=data)
     assert response.status_code == 200

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html
+<head>
+    <title>Email Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+          <li><a href="#home">Message List</a></li>
+          <li><a href="#save_email">Submit Email</a></li>
+          <li><a href="#recipient_list">Recipient List</a></li>
+        </ul>
+      </nav>
+    
+      <section id="home" class="page">
+        <h1>Email Management GUI</h1>
+        <h2>List of Saved Emails</h2>
+        <ul>
+            {% for email in saved_emails %}
+            <li>{{ email.event_id }} - {{ email.email_subject }} - {{ email.timestamp }}</li>
+            {% endfor %}
+        </ul>
+      </section>
+    
+      <section id="save_email" class="page">
+        <h1>Submit Email</h1>
+        <form action="/save_email" method="post">
+            <label for="event_id">Event ID:</label>
+            <input type="text" id="event_id" name="event_id" required><br><br>
+            
+            <label for="email_subject">Email Subject:</label>
+            <input type="text" id="email_subject" name="email_subject" required><br><br>
+            
+            <label for="email_content">Email Content:</label><br>
+            <textarea id="email_content" name="email_content" required></textarea><br><br>
+            
+            <label for="timestamp">Timestamp:</label>
+            <input type="text" id="timestamp" name="timestamp" placeholder="dd mm yyyy HH:MM" required><br><br>
+            
+            <input type="submit" value="Save Email">
+        </form>
+      </section>
+    
+      <section id="recipient_list" class="page">
+        <h1>Recipient List</h1>
+        <ul>
+            {% for recipient in recipients %}
+            <li>{{ recipient.email_address }}</li>
+            {% endfor %}
+        </ul>
+      </section>
+    
+      <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 import os
 import pytz
 import threading
-from flask import Flask, request
+from flask import Flask, request, render_template
 from flask_mail import Mail, Message
 from datetime import datetime, timedelta
 from models import db, Email, Recipient
@@ -21,7 +21,10 @@ if app.config['FLASK_ENV'] != "PRODUCTION":
 
 @app.route('/', methods=['GET'])
 def main_page():
-    return "Welcome"
+    emails = Email.query.all()
+    recipients = Recipient.query.all()
+    
+    return render_template('index.html', saved_emails=emails, recipients=recipients)
 
 
 @app.route('/save_emails', methods=['POST'])
