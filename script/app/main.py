@@ -82,10 +82,8 @@ def send_email(subject, content):
         message = Message(subject=subject, sender=sender,
                             recipients=recipients, body=body)
         mail = Mail(app)
-        print(mail)
-        print(message)
         # Send the email
-        # mail.send(message)
+        mail.send(message)
     print(f'Sending email with subject: {subject}')
     print(f'Content: {content}')
 

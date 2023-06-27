@@ -2,3 +2,5 @@ flask
 flask_sqlalchemy
 Flask-Mail
 pytz
+pytest
+pytest-flask
