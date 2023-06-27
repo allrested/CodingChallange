@@ -4,7 +4,7 @@ services:
     restart: unless-stopped
     build: script
     container_name: email_backend
-    environment:
+    env_file:
       - .env
     volumes:
       - ./script/app:/app
