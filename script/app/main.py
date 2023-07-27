@@ -23,7 +23,7 @@ if app.config['FLASK_ENV'] != "PRODUCTION":
 def main_page():
     emails = Email.query.all()
     recipients = Recipient.query.all()
-    
+
     return render_template('index.html', saved_emails=emails, recipients=recipients)
 
 
@@ -56,10 +56,8 @@ def send_emails():
         emails = Email.query.filter(Email.timestamp <= current_time).all()
 
         for email in emails:
-            # Send the email
-            # Replace the placeholders with the actual implementation to send the email
             try:
-                print(email.timestamp)
+                #print(email.timestamp)
                 send_email(email.email_subject,
                            email.email_content)
                 # Remove the email from the database
@@ -70,7 +68,7 @@ def send_emails():
 
 
 def send_email(subject, content):
-    # If environment is PRODUCTION, send actual email, otherwise only printf
+    # If environment is PRODUCTION, send actual email, otherwise only print
     if app.config['FLASK_ENV'] == "PRODUCTION":
         # Create a message object
         subject = subject
